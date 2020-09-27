@@ -220,6 +220,11 @@ PrefabInstance:
       propertyPath: _faction
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3693366671914299974, guid: c7feab29e91e7384cab63aa90fcd35d6,
+        type: 3}
+      propertyPath: _livingThing
+      value: 
+      objectReference: {fileID: 7332462791413611684}
     - target: {fileID: 5586016876425256574, guid: c7feab29e91e7384cab63aa90fcd35d6,
         type: 3}
       propertyPath: _initialLife
@@ -240,6 +245,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2902465298035647194}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7332462791413611684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5586016876425256574, guid: c7feab29e91e7384cab63aa90fcd35d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2902465298035647194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778925902754700633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647e6a78da4008f49b9dcf2e5cb4c8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1947483191558787228 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3693366671914299974, guid: c7feab29e91e7384cab63aa90fcd35d6,

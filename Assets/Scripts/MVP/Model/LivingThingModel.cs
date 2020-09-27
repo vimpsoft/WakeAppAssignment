@@ -14,6 +14,7 @@ public class LivingThingModel : MonoBehaviour, ILivingThingModel
     public void ProcessDamage(float damage)
     {
         _currentLife = Mathf.Max(_currentLife - damage, 0);
+        Debug.LogWarning($"Попадание! Осталось {_currentLife}");
         if (_currentLife == 0)
         {
             OnDeath?.Invoke();

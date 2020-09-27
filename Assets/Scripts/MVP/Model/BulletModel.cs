@@ -11,7 +11,7 @@ public class BulletModel : MonoBehaviour
     private void selfDestruct() => Destroy(gameObject);
     internal void ProcessCollision(GameObject go)
     {
-        go.GetComponent<ILivingThingModel>()?.ProcessDamage(_damage.Value);
+        go.GetComponentInParent<ILivingThingModel>()?.ProcessDamage(_damage.Value);
         selfDestruct();
     }
 }
