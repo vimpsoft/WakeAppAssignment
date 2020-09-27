@@ -1,5 +1,18 @@
 fileFormatVersion: 2
-guid: 77e3f63cbc014eb4bbe6f7ca7d253c1b
+guid: 17064945309b5d84ea801f4ecb62eb4f
+labels:
+- IUnified
+- abstractions
+- abstraction
+- dependencies
+- dependency
+- fields
+- field
+- editor
+- inspector
+- interfaces
+- interface
+- C#
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

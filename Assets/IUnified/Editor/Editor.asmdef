@@ -1,0 +1,17 @@
+{
+    "name": "IUnifiedEditor",
+    "references": [
+        "GUID:a472696523a937c4d9ba25b2c8f4af77",
+        "GUID:b95b281cf55bd7d4e92b090ab989022a"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}
