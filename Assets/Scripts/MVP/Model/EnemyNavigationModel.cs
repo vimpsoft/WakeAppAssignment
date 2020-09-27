@@ -1,32 +1,54 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
+/// <summary>
+/// Модель навигации определяет что конкретно делает в плане навигации противник.
+/// Стандартная стратегия такая - патрулируем, а если видим игрока - стреляем по нему
+/// Также, раз этот класс объединяет стейты навигации - используем его аггрегатор всех
+/// навигационных сообщений от всех стейтов
+/// </summary>
 public class EnemyNavigationModel : MonoBehaviour, INavigationModel
 {
     public event MoveNavigationHandler OnMove;
     public event RotateNavigationHandler OnRotate;
 
     [SerializeField]
-    private Transform[] _partolPoints;
+    private ActorNavigationStateMachineModel _stateMachine;
 
     [SerializeField]
-    private FloatValue _evemyMoveSpeed;
+    private NavigationStateModelSerializableInterface _patrolState;
+    [SerializeField]
+    private NavigationStateModelSerializableInterface _aggroState;
 
-    private int _targetIndex;
+    [SerializeField]
+    private NavigationModelSerializableInterface[] _navigationModels;
+
+    [SerializeField]
+    private FloatValue _enemySightRadius;
+
+    [SerializeField]
+    private FactionMembersModel _fractionsRegistry;
+    [SerializeField]
+    private FactionMemberModel _myFractionHolder;
+
+    private void Start()
+    {
+        for (int i = 0; i < _navigationModels.Length; i++)
+        {
+            _navigationModels[i].Interface.OnMove += OnMove;
+            _navigationModels[i].Interface.OnRotate += OnRotate;
+        }
+    }
 
     private void Update()
     {
-        if (_partolPoints.Length < 2) //Патрулировать мы можем минимум между 2 точками, не меньше
+        var allEnemies = _fractionsRegistry.GetAllFactionMembers(~_myFractionHolder.Faction & Faction.Everything);
+        //Тут я использую линк просто для быстроты разработки. А вообще это не очень производительно.
+        if (!allEnemies.Any())
             return;
-
-        var from = _partolPoints[_targetIndex % _partolPoints.Length];
-        var to = _partolPoints[(_targetIndex + 1) % _partolPoints.Length];
-
-        var vector = to.position - from.position;
-
-        if (Vector3.Dot(vector, to.position - transform.position) < 0) //Если мы зашли за цель, идем к следующей.
-            _targetIndex++;
-
-        OnRotate?.Invoke(Quaternion.LookRotation(vector.normalized).eulerAngles);
-        OnMove?.Invoke(new Vector2(_evemyMoveSpeed.Value * Time.deltaTime, 0));
+        var allEnemiesInRange = allEnemies
+            .OrderBy(enemy => Vector3.Distance(enemy.position, transform.position))
+            .Where(enemy => Vector3.Distance(enemy.position, transform.position) <= _enemySightRadius.Value);
+        _stateMachine.SetState(allEnemiesInRange.Any() ? _aggroState.Interface : _patrolState.Interface);
     }
 }

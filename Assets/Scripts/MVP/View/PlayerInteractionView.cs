@@ -8,6 +8,7 @@ public class PlayerInteractionView : MonoBehaviour
 {
     public event Action<KeyCode> OnKeyPressed;
     public event Action<Vector2> OnMouseMove;
+    public event Action OnLmbClicked;
 
     private Vector3 _oldMousePosition;
 
@@ -34,5 +35,8 @@ public class PlayerInteractionView : MonoBehaviour
             OnMouseMove?.Invoke(new Vector2(delta.x, delta.y));
             _oldMousePosition = Input.mousePosition;
         }
+
+        if (Input.GetMouseButton(0))
+            OnLmbClicked?.Invoke();
     }
 }

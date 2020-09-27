@@ -12,5 +12,6 @@ public class PlayerInteractionPresenter : MonoBehaviour
     {
         _view.OnKeyPressed += _model.ProcessKeyPress;
         _view.OnMouseMove += _model.ProcessMouseMove;
+        _view.OnLmbClicked += _model.ProcessLmbPressed;
     }
 }
