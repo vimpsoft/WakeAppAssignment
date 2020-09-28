@@ -12,7 +12,8 @@ public class BulletPresenter : MonoBehaviour
     private void Start()
     {
         _view.OnCollided += _model.ProcessCollision;
+        _view.Push(_speed.Value);
     }
 
-    private void Update() => _view.Move(_speed.Value);
+    //private void Update() => _view.Move(_speed.Value);
 }

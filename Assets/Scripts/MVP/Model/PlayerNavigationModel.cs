@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.XR.WSA.Input;
 
 /// <summary>
 /// Модель навигации определяет что конкретно мы делаем в плане навигации.
@@ -48,6 +49,15 @@ public class PlayerNavigationModel : MonoBehaviour, INavigationModel
         {
             _timeCounter = _delayUntilStartAggroStrategy;
             _stateMachine.SetState(_playerControlledState.Interface);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        for (int i = 0; i < _navigationModels.Length; i++)
+        {
+            _navigationModels[i].Interface.OnMove -= OnMove;
+            _navigationModels[i].Interface.OnRotate -= OnRotate;
         }
     }
 
