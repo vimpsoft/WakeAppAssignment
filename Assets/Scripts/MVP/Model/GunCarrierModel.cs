@@ -8,4 +8,5 @@ public class GunCarrierModel : MonoBehaviour
     private GunnerModelSerializableInterface _gunnerModel;
 
     private void Start() => _gunnerModel.Interface.OnShoot += _gun.Interface.Shoot;
+    private void OnDestroy() => _gunnerModel.Interface.OnShoot -= _gun.Interface.Shoot;
 }

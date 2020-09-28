@@ -14,4 +14,11 @@ public class PlayerInteractionPresenter : MonoBehaviour
         _view.OnMouseMove += _model.ProcessMouseMove;
         _view.OnLmbClicked += _model.ProcessLmbPressed;
     }
+
+    private void OnDestroy()
+    {
+        _view.OnKeyPressed -= _model.ProcessKeyPress;
+        _view.OnMouseMove -= _model.ProcessMouseMove;
+        _view.OnLmbClicked -= _model.ProcessLmbPressed;
+    }
 }

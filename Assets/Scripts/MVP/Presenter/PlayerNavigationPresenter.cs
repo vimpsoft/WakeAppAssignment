@@ -10,5 +10,4 @@ public class PlayerNavigationPresenter : MonoBehaviour
         _navigationData.Position = transform.position;
         _navigationData.Rotation = transform.rotation;
     }
-
 }

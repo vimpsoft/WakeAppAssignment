@@ -1,52 +1,60 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = nameof(PlayerNavigationModel), menuName = "WakeApp/" + nameof(PlayerNavigationModel), order = 0)]
-public class PlayerNavigationModel : ScriptableObject, INavigationModel
+/// <summary>
+/// Модель навигации определяет что конкретно мы делаем в плане навигации.
+/// Стандартная стратегия такая - если мы управляем игроком - подчиняемся, иначе, а если видим противника - стреляем по нему
+/// Также, раз этот класс объединяет стейты навигации - используем его аггрегатор всех
+/// навигационных сообщений от всех стейтов
+/// </summary>
+public class PlayerNavigationModel : MonoBehaviour, INavigationModel
 {
     public event MoveNavigationHandler OnMove;
     public event RotateNavigationHandler OnRotate;
 
     [SerializeField]
-    private FloatValue _moveSpeed;
+    private float _delayUntilStartAggroStrategy = 2f;
 
     [SerializeField]
-    private FloatValue _rotateSensitivity;
-    [SerializeField]
-    private FloatValue _minPitch;
-    [SerializeField]
-    private FloatValue _maxPitch;
+    private ActorNavigationStateMachineModel _stateMachine;
 
-    private Vector3 _currentRotation;
+    [SerializeField]
+    private NavigationStateModelSerializableInterface _aggroState;
+    [SerializeField]
+    private NavigationStateModelSerializableInterface _playerControlledState;
 
-    public void OnInputKey(KeyCode keyCode)
+    [SerializeField]
+    private NavigationModelSerializableInterface _playerControlledNavigationModel;
+
+    [SerializeField]
+    private NavigationModelSerializableInterface[] _navigationModels;
+
+    private float _timeCounter;
+
+    private void Start()
     {
-        var forwardValue = default(float);
-        switch (keyCode)
+        _timeCounter = _delayUntilStartAggroStrategy;
+
+        for (int i = 0; i < _navigationModels.Length; i++)
         {
-            case KeyCode.W:
-                forwardValue = _moveSpeed.Value;
-                break;
-            case KeyCode.S:
-                forwardValue = -_moveSpeed.Value;
-                break;
+            _navigationModels[i].Interface.OnMove += OnMove;
+            _navigationModels[i].Interface.OnRotate += OnRotate;
         }
 
-        var rightValue = default(float);
-        switch (keyCode)
+        //При любом инпуте от пользователя мы переключаемся на его стейт
+        _playerControlledNavigationModel.Interface.OnMove += _ => setPlayerControlledState();
+        _playerControlledNavigationModel.Interface.OnRotate += _ => setPlayerControlledState();
+
+        void setPlayerControlledState()
         {
-            case KeyCode.A:
-                rightValue = -_moveSpeed.Value;
-                break;
-            case KeyCode.D:
-                rightValue = _moveSpeed.Value;
-                break;
+            _timeCounter = _delayUntilStartAggroStrategy;
+            _stateMachine.SetState(_playerControlledState.Interface);
         }
-        OnMove?.Invoke(new Vector2(forwardValue, rightValue));
     }
 
-    public void OnMouseMove(Vector2 delta)
+    private void Update()
     {
-        _currentRotation = new Vector3(Mathf.Clamp(_currentRotation.x + delta.y * _rotateSensitivity.Value, _minPitch.Value, _maxPitch.Value), _currentRotation.y - delta.x * _rotateSensitivity.Value, 0f);
-        OnRotate?.Invoke(_currentRotation);
+        _timeCounter -= Time.deltaTime;
+        if (_timeCounter <= 0)
+            _stateMachine.SetState(_aggroState.Interface);
     }
 }

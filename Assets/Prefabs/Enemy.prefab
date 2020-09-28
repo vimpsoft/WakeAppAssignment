@@ -25,17 +25,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ae6bd672cf7c741b8c72d44cce5613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateMachine: {fileID: 3929335683936609936}
+  _stateMachine: {fileID: 3344409567298325383}
   _patrolState:
     ObjectField: {fileID: 5719247976151426468}
     ResultType: 
   _aggroState:
-    ObjectField: {fileID: 4249413304530101714}
+    ObjectField: {fileID: 2477783976806343666}
     ResultType: 
   _navigationModels:
   - ObjectField: {fileID: 5719247976151426468}
     ResultType: 
-  - ObjectField: {fileID: 4249413304530101714}
+  - ObjectField: {fileID: 2477783976806343666}
     ResultType: 
   _enemySightRadius: {fileID: 11400000, guid: 4983120a8d876e747bd77d415f24e2c9, type: 2}
   _fractionsRegistry: {fileID: 11400000, guid: c0f5667bbafdda941b838ce9309d6035, type: 2}
@@ -92,33 +92,6 @@ MonoBehaviour:
   _model:
     ObjectField: {fileID: 673249116}
     ResultType: 
---- !u!114 &3929335683936609936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778925902754700633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98e0f648809332047a46529dfe227586, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4249413304530101714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 778925902754700633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81986a3eb4e4039438410f51c2abe5ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemySightRadius: {fileID: 11400000, guid: 4983120a8d876e747bd77d415f24e2c9, type: 2}
-  _fractionsRegistry: {fileID: 11400000, guid: c0f5667bbafdda941b838ce9309d6035, type: 2}
-  _myFractionHolder: {fileID: 1947483191558787228}
 --- !u!114 &5719247976151426468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +113,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 731126483013222696, guid: c7feab29e91e7384cab63aa90fcd35d6,
+        type: 3}
+      propertyPath: _enemySightRadius
+      value: 
+      objectReference: {fileID: 11400000, guid: 4983120a8d876e747bd77d415f24e2c9,
+        type: 2}
     - target: {fileID: 2488498504699216774, guid: c7feab29e91e7384cab63aa90fcd35d6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -209,7 +188,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _gunnerModel.ObjectField
       value: 
-      objectReference: {fileID: 4249413304530101714}
+      objectReference: {fileID: 2477783976806343666}
     - target: {fileID: 3693366671914299974, guid: c7feab29e91e7384cab63aa90fcd35d6,
         type: 3}
       propertyPath: _fraction
@@ -267,5 +246,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d2b84a6dcf64bc40b0f159640ab05ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2477783976806343666 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 731126483013222696, guid: c7feab29e91e7384cab63aa90fcd35d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2902465298035647194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778925902754700633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81986a3eb4e4039438410f51c2abe5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3344409567298325383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 445322033550338397, guid: c7feab29e91e7384cab63aa90fcd35d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2902465298035647194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778925902754700633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e0f648809332047a46529dfe227586, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

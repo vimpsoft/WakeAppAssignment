@@ -1,9 +1,20 @@
 ﻿using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = nameof(PlayerGunnerModel), menuName = "WakeApp/" + nameof(PlayerGunnerModel), order = 0)]
-public class PlayerGunnerModel : ScriptableObject, IGunnerModel
+/// <summary>
+/// Класс объединяет логику от различных источников стрельбы игрока
+/// </summary>
+public class PlayerGunnerModel : MonoBehaviour, IGunnerModel
 {
     public event Action OnShoot;
-    public void OnLBM() => OnShoot?.Invoke();
+
+    [SerializeField]
+    private GunnerModelSerializableInterface[] _gunnerModels;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        for (int i = 0; i < _gunnerModels.Length; i++)
+            _gunnerModels[i].Interface.OnShoot += OnShoot;
+    }
 }

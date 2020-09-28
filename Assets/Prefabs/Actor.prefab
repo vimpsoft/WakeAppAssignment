@@ -105,6 +105,8 @@ GameObject:
   - component: {fileID: 5586016876425256574}
   - component: {fileID: 3438932016769076565}
   - component: {fileID: 3693366671914299974}
+  - component: {fileID: 731126483013222696}
+  - component: {fileID: 445322033550338397}
   m_Layer: 0
   m_Name: Actor
   m_TagString: Untagged
@@ -174,6 +176,33 @@ MonoBehaviour:
   _livingThing: {fileID: 5586016876425256574}
   _faction: 0
   _registry: {fileID: 11400000, guid: c0f5667bbafdda941b838ce9309d6035, type: 2}
+--- !u!114 &731126483013222696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2488498505599647619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81986a3eb4e4039438410f51c2abe5ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemySightRadius: {fileID: 0}
+  _fractionsRegistry: {fileID: 11400000, guid: c0f5667bbafdda941b838ce9309d6035, type: 2}
+  _myFractionHolder: {fileID: 3693366671914299974}
+--- !u!114 &445322033550338397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2488498505599647619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98e0f648809332047a46529dfe227586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2488498506426275570
 GameObject:
   m_ObjectHideFlags: 0

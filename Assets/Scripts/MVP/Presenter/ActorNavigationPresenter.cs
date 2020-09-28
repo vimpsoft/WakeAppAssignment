@@ -13,4 +13,10 @@ public class ActorNavigationPresenter : MonoBehaviour
         _model.Interface.OnMove += _view.Move;
         _model.Interface.OnRotate += _view.Rotate;
     }
+
+    private void OnDestroy()
+    {
+        _model.Interface.OnMove -= _view.Move;
+        _model.Interface.OnRotate -= _view.Rotate;
+    }
 }

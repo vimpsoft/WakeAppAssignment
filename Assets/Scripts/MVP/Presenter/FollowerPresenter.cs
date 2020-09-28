@@ -1,4 +1,5 @@
-﻿using TMUnity;
+﻿using System.Net.NetworkInformation;
+using TMUnity;
 using UnityEngine;
 
 public class FollowerPresenter : MonoBehaviour
@@ -8,6 +9,8 @@ public class FollowerPresenter : MonoBehaviour
 
     [SerializeField, Tooltip("На сколько сдвигать будем?")]
     private Vector3 _offset;
+    [SerializeField, Tooltip("Записать в оффсет изначальное смещение объекта?")]
+    private bool _applyInitialOffset;
 
     /*
      * Interpolator - это очень полезный класс, который я своровал из майкрософтвоского холотулкита, когда работал с очками Хололенс.
@@ -16,8 +19,16 @@ public class FollowerPresenter : MonoBehaviour
     [SerializeField]
     private Interpolator _interpolator;
 
+    private void Start()
+    {
+        if (_applyInitialOffset)
+            //_offset = _whatToFollow.position - transform.position;
+            _offset = _whatToFollow.InverseTransformPoint(transform.position);
+    }
+
     private void Update()
     {
-        _interpolator.SetTargetPosition(_whatToFollow.position + _offset);
+        if (_whatToFollow != null)
+            _interpolator.SetTargetPosition(_whatToFollow.TransformPoint(_offset));
     }
 }
