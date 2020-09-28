@@ -13,7 +13,7 @@ public class FollowerPresenter : MonoBehaviour
     private bool _applyInitialOffset;
 
     /*
-     * Interpolator - это очень полезный класс, который я своровал из майкрософтвоского холотулкита, когда работал с очками Хололенс.
+     * Interpolator - это класс, который я своровал из майкрософтвоского холотулкита, когда работал с очками Хололенс.
      * Очень полезный класс и под MIT лицензией.
      */
     [SerializeField]

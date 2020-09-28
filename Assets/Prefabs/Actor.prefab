@@ -311,6 +311,8 @@ GameObject:
   - component: {fileID: 4501858294248159223}
   - component: {fileID: 3887400971938515241}
   - component: {fileID: 263577579729262322}
+  - component: {fileID: 9213926136103187950}
+  - component: {fileID: 5451740262041382484}
   m_Layer: 0
   m_Name: LaserAim
   m_TagString: Untagged
@@ -439,12 +441,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9161adc44b52cf449dd77e0af591107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _model: {fileID: 5451740262041382484}
+  _view: {fileID: 9213926136103187950}
+--- !u!114 &9213926136103187950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026880116976787667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54b340664dc53443a4ed9c16dcf47ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 3887400971938515241}
-  _rotation: {fileID: 2488498506426275571}
-  _defaultLaserLength: {fileID: 11400000, guid: a8039422317165140a5c8be32c91b1df,
-    type: 2}
   _laserStartWidth: {fileID: 11400000, guid: 7c2992e7d9241bc41b55346bb0dc5236, type: 2}
   _laserEndWidth: {fileID: 11400000, guid: 707e48793ea92204c872bf5c54291783, type: 2}
+--- !u!114 &5451740262041382484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4026880116976787667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6e5ea53c9d3d3b4f9934553fd41b64b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotation: {fileID: 4501858294248159223}
+  _defaultLaserLength: {fileID: 11400000, guid: a8039422317165140a5c8be32c91b1df,
+    type: 2}
 --- !u!1 &4600082950962929296
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,6 +25,8 @@ public class PlayerNavigationModel : MonoBehaviour, INavigationModel
 
     [SerializeField]
     private NavigationModelSerializableInterface _playerControlledNavigationModel;
+    [SerializeField]
+    private GunnerModelSerializableInterface _playerControlledGunnerModel;
 
     [SerializeField]
     private NavigationModelSerializableInterface[] _navigationModels;
@@ -44,6 +46,7 @@ public class PlayerNavigationModel : MonoBehaviour, INavigationModel
         //При любом инпуте от пользователя мы переключаемся на его стейт
         _playerControlledNavigationModel.Interface.OnMove += _ => setPlayerControlledState();
         _playerControlledNavigationModel.Interface.OnRotate += _ => setPlayerControlledState();
+        _playerControlledGunnerModel.Interface.OnShoot += setPlayerControlledState;
 
         void setPlayerControlledState()
         {

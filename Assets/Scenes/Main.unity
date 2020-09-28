@@ -658,7 +658,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 8.17e-43, y: NaN, z: 8.17e-43, w: -2.542607e+25}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseUnscaledTime: 1
   PositionPerSecond: 30
-  RotationDegreesPerSecond: 90
+  RotationDegreesPerSecond: 180
   RotationSpeedScaler: 0
   ScalePerSecond: 5
   SmoothLerpToTarget: 0
@@ -1853,6 +1853,9 @@ MonoBehaviour:
     ResultType: 
   _playerControlledNavigationModel:
     ObjectField: {fileID: 11400000, guid: d517de62544c86046966226314daaaa8, type: 2}
+    ResultType: 
+  _playerControlledGunnerModel:
+    ObjectField: {fileID: 11400000, guid: 353d5732a6eca99479044fb5c2d97df8, type: 2}
     ResultType: 
   _navigationModels:
   - ObjectField: {fileID: 11400000, guid: d517de62544c86046966226314daaaa8, type: 2}

@@ -15,5 +15,5 @@ public class BulletPresenter : MonoBehaviour
         _view.Push(_speed.Value);
     }
 
-    //private void Update() => _view.Move(_speed.Value);
+    //private void Update() => _view.Move(_speed.Value); //Это было до того как пуля стала баллистической
 }
