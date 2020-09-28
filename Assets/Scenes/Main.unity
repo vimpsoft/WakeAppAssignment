@@ -1781,7 +1781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UseUnscaledTime: 1
   PositionPerSecond: 30
-  RotationDegreesPerSecond: 720
+  RotationDegreesPerSecond: 90
   RotationSpeedScaler: 0
   ScalePerSecond: 5
   SmoothLerpToTarget: 0
